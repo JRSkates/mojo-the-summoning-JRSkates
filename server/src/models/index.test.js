@@ -33,8 +33,8 @@ describe('Attack, Card, Deck and User associations', () => {
 
     test("Deck-Card associations", async () => {
         const deck = await Deck.create({ name: "Jack's Deck", xp: 100 })
-        const card1 = await Card.create({ name: "Alaric Flamecaller", mojo: 10, stamina: 5, imgUrl: "https://example.com/fireball.jpg" })
-        const card2 = await Card.create({ name: "Theron Ironfist", mojo: 15, stamina: 7, imgUrl: "https://example.com/fireball-2.jpg" })
+        const card1 = await Card.create({ name: "Alaric Flamecaller", mojo: 10, stamina: 5, imgUrl: "../static/img/alaric_flamecaller.jpg" })
+        const card2 = await Card.create({ name: "Theron Ironfist", mojo: 15, stamina: 7, imgUrl: "../static/img/theron-ironfist.jpg" })
 
         // Associate the deck with the cards
         await deck.addCards(card1)
@@ -53,8 +53,8 @@ describe('Attack, Card, Deck and User associations', () => {
     })
 
     test("Card-Attack association", async () => {
-        const card1 = await Card.create({ name: "Alaric Flamecaller", mojo: 10, stamina: 5, imgUrl: "https://example.com/fireball.jpg" })
-        const card2 = await Card.create({ name: "Theron Ironfist", mojo: 15, stamina: 7, imgUrl: "https://example.com/fireball-2.jpg" })
+        const card1 = await Card.create({ name: "Alaric Flamecaller", mojo: 10, stamina: 5, imgUrl: "../static/img/alaric_flamecaller.jpg" })
+        const card2 = await Card.create({ name: "Theron Ironfist", mojo: 15, stamina: 7, imgUrl: "../static/img/theron-ironfist.jpg" })
         const attack1 = await Attack.create({ title: "Fireball", mojoCost: 2, staminaCost: 1 })
         const attack2 = await Attack.create({ title: "Thunderbolt", mojoCost: 3, staminaCost: 2 })
 
