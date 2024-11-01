@@ -51,4 +51,22 @@ describe('Attack, Card, Deck and User associations', () => {
         expect(foundDeck[0].DeckId).toBe(2)
         expect(foundDeck[1].DeckId).toBe(2)
     })
+
+    test("Card-Attack association", async () => {
+        const card1 = await Card.create({ name: "Alaric Flamecaller", mojo: 10, stamina: 5, imgUrl: "https://example.com/fireball.jpg" })
+        const card2 = await Card.create({ name: "Theron Ironfist", mojo: 15, stamina: 7, imgUrl: "https://example.com/fireball-2.jpg" })
+        const attack1 = await Attack.create({ title: "Fireball", mojoCost: 2, staminaCost: 1 })
+        const attack2 = await Attack.create({ title: "Thunderbolt", mojoCost: 3, staminaCost: 2 })
+
+        // Associate the card with the attack
+        await card1.addAttack(attack1)
+        await card1.addAttack(attack2)
+        const card1Attacks = await card1.getAttacks()
+        expect(card1Attacks.length).toBe(2)
+
+        await card2.addAttack(attack1)
+        await card2.addAttack(attack2)
+        const card2Attacks = await card2.getAttacks()
+        expect(card2Attacks.length).toBe(2)
+    })
 })
