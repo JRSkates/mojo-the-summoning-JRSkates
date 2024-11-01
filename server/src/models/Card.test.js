@@ -9,7 +9,7 @@ let card;
 beforeAll(async () => {
   await db.sync({ force: true });
   card = await Card.create({
-    name: "Fireball",
+    name: "Alaric Flamecaller",
     mojo: 10,
     stamina: 5,
     imgUrl: "https://example.com/fireball.jpg",
@@ -25,7 +25,7 @@ describe("Card", () => {
   });
 
   it("Initializes a new Deck", async () => {
-    expect(card.name).toEqual("Fireball");
+    expect(card.name).toEqual("Alaric Flamecaller");
     expect(card.mojo).toBe(10);
     expect(card.stamina).toBe(5);
     expect(card.imgUrl).toEqual("https://example.com/fireball.jpg");
